@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 require('dotenv').config()
 // Create a connection object
 const sequelize = new Sequelize(
-  procces.env.DB_NAME,
-  procces.env.DB_ROOT,
-  procces.env.DB_PASSWORD,
+  process.env.DB_NAME,
+  process.env.DB_ROOT,
+  process.env.DB_PASSWORD,
   {
     // Database location
     host: 'localhost',
