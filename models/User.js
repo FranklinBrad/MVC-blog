@@ -8,7 +8,6 @@ class User extends Model {
   }
 };
 
-// will need relationship to Characters
 User.init(
   {
     id: {
