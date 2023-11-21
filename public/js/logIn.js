@@ -26,7 +26,7 @@ const loginFormHandler = async (event) => {
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
-    const email = document.querySelector('#userNameSignup').value.trim();
+    const username = document.querySelector('#userNameSignup').value.trim();
     const password = document.querySelector('#passwordSignup').value.trim();
   
     if (username && password) {
@@ -38,7 +38,7 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         console.log('welcome', username)
-        // document.location.replace('/profile');
+         document.location.replace('/');
       } else {
         alert(response.statusText);
       }
