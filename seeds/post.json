@@ -1,7 +1,6 @@
 [
     {
         "post_title": "example title",
-        "post_body" : "example body",
-        "user_id" : 1
+        "post_body" : "example body"
     }
 ]

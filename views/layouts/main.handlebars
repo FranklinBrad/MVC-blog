@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" >
 
 <head>
   <meta charset="utf-8">
@@ -17,9 +17,46 @@
         background-color: aliceblue;
         color: black;
     }
+    .card-body{
+      outline-width: 2px;
+      outline-color: black;
+    }
    
 </style>
+<body>
+<main>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <p class="navbar-brand" href="#">Tech Blog</p>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dash Board</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Log in</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Log out</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+    </header>
+
+    <div>
+      <h1>The Tech Blog</h1>
+    </div>
 {{{body}}}
-
-
+</main>
+</body>
 </html>

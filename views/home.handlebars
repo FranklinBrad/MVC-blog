@@ -1,45 +1,16 @@
 
-<main>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <p class="navbar-brand" href="#">Tech Blog</p>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dash Board</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/login">Log in</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled">Log out</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
 
-    </header>
-
-    <div>
-      <h1>The Tech Blog</h1>
-    </div>
     <section>
       <div>
        <h2> Recent posts</h2>
-       <div class="col-4 list-container">
-          <div class="card">
-            <ul class="list-group"></ul>
-          </div>
-        </div>
+       {{#each posts}}
+       <div class="card-body">
+      <a href="/posts/{{id}}" >{{post_title}}</a>
+      <p>{{post_body}}</p>
+      <p>created by: {{User.username}} on {{format_date createdAt}}</p>
+  </div>
+  {{/each}}
       </div>
     </section>
     
-</main>
+

@@ -1,0 +1,19 @@
+<div>
+    <h2>{{post_title}}</h2>
+    <P>{{post_body}}</P>
+    <p>created by: {{User.username}} on {{format_date createdAt}}</p>
+</div>
+<div>
+    {{#if comments}}
+    <h2>Comments</h2>
+    {{#each comments}}
+    <p>{{comment_body}}</p>
+    <p>created by: {{User.username}} on {{format_date createdAt}}</p>
+    {{/each}}
+    {{/if}}
+</div>
+<input type="hidden" value="{{id}}" id="postId">
+<form class="comment_form"><textarea name="comment" id="comment" cols="30" rows="3"></textarea><button type="submit"
+        id="commentBtn">Save</button></form>
+
+        <script src="/js/comment.js"></script>
