@@ -1,25 +1,21 @@
-const router = require('express').Router();
-const User = require('../../models/User');
+const router = require("express").Router();
+const User = require("../../models/User");
 
-router.get('/', async (req, res) => {
-  try{
-   const payload = await User.findAll();
-   res.status(201).json({status: ('succes'), payload})
-  } catch (err){
-   res.status(401).json({status: ('error'), payload: err.message})
-
+router.get("/", async (req, res) => {
+  try {
+    const payload = await User.findAll();
+    res.status(201).json({ status: "succes", payload });
+  } catch (err) {
+    res.status(401).json({ status: "error", payload: err.message });
   }
-} )
+});
 
-
-// CREATE new user
-
-router.post('/create-user', async (req, res) => {
-  console.log("hit create user")
+router.post("/create-user", async (req, res) => {
+  console.log("hit create user");
   try {
     const userData = await User.create(req.body);
 
-    // Logs user in after creation/signup 
+    // Logs user in after creation/signup
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -34,28 +30,30 @@ router.post('/create-user', async (req, res) => {
 });
 
 // Log User In
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    console.log("hit login user")
+    console.log("hit login user");
     // Check if the entered username is in the database
-    const userData = await User.findOne({ where: { username: req.body.username } });
+    const userData = await User.findOne({
+      where: { username: req.body.username },
+    });
 
     // If the username doesn't exist, send back error
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect username or password, please try again' });
+        .json({ message: "Incorrect username or password, please try again" });
       return;
     }
 
-     // If the username exists, validate password
+    // If the username exists, validate password
     const validPassword = await userData.checkPassword(req.body.password);
 
     // If the password isn't correct, send back error
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect username or password, please try again' });
+        .json({ message: "Incorrect username or password, please try again" });
       return;
     }
 
@@ -63,18 +61,17 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
 
+      res.json({ user: userData, message: "You are now logged in!" });
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 // Logout User
-router.post('/logout', (req, res) => {
-  console.log(req.session.logged_in)
+router.post("/logout", (req, res) => {
+  console.log(req.session.logged_in);
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
