@@ -1,8 +1,13 @@
 {
-  "name": "boiler_plate",
+  "name": "mvc-blog",
+  "engines": {
+    "node": "14.x"
+  },
+  
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
