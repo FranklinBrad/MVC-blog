@@ -1,8 +1,18 @@
+<style>
+  .post-card {
+    border: 2px solid #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+</style>
+
 <section>
   <div>
-    <h2> Recent posts</h2>
+    <h2>Recent posts</h2>
     {{#each posts}}
-    <div class="card-body">
+    <div class="card-body post-card">
       <a href="/posts/{{id}}">{{post_title}}</a>
       <p>{{post_body}}</p>
       <p>created by: {{User.username}} on {{format_date createdAt}}</p>
@@ -10,3 +20,4 @@
     {{/each}}
   </div>
 </section>
+

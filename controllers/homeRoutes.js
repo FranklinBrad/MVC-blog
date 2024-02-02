@@ -1,9 +1,12 @@
 const router = require("express").Router();
-const { Post, User } = require("../models");
+const { Post, User, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
-    const postData = await Post.findAll({ include: [User] });
+    const postData = await Post.findAll({
+      include: [User],
+      order: [['createdAt', 'DESC']],  
+    });
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
     res.render("home", { posts });
@@ -11,6 +14,7 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 router.get("/posts/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -23,33 +27,34 @@ router.get("/posts/:id", async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
-  try {
-    res.render("login");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-router.get("/dashboard", async (req, res) => {
-  try {
-    res.render("dashboard");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-router.get("/signup", async (req, res) => {
-  try {
-    res.render("create");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-router.get("/logout", async (req, res) => {
-  try {
-    res.render("logout");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
-module.exports = router;
+router.get("/login", async (req, res) => {
+   try {
+     res.render("login");
+   } catch (err) {
+     res.status(500).json(err);
+   }
+ });
+ router.get("/dashboard", async (req, res) => {
+   try {
+     res.render("dashboard");
+   } catch (err) {
+     res.status(500).json(err);
+   }
+ });
+ router.get("/signup", async (req, res) => {
+   try {
+     res.render("create");
+   } catch (err) {
+     res.status(500).json(err);
+   }
+ });
+ router.get("/logout", async (req, res) => {
+   try {
+     res.render("logout");
+   } catch (err) {
+     res.status(500).json(err);
+   }
+ });
+
+ module.exports = router;
