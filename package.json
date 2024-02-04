@@ -1,8 +1,6 @@
 {
   "name": "mvc-blog",
-  "engines": {
-    "node": "14.x"
-  },
+ 
   
   "version": "1.0.0",
   "description": "",
@@ -17,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node": "^21.6.1",
     "bcrypt": "^5.1.1",
     "connect-session-sequelize": "^7.1.7",
     "dotenv": "^16.3.1",
